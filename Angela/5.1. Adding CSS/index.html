@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Adding CSS</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(137, 191, 252);
+      }
+
+      .container {
+        background-color: white;
+        padding: 200px 40px;
+        border-radius: 50px;
+      }
+      .linkBox {
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .links {
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        text-decoration: none;
+        color: rgb(41, 39, 37);
+        text-decoration: underline;
+        margin-right: 15px;
+      }
+
+      .links:hover {
+        color: green;
+      }
+
+      .links:last-child {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Three Methods of Adding CSS</h1>
+      <div class="linkBox">
+        <a class="links" href="inline.html">Inline</a>
+        <a class="links" href="internal.html">internal</a>
+        <a class="links" href="external.html">External</a>
+      </div>
+    </div>
+  </body>
+</html>

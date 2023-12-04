@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+  height: 100%;
+  overflow: hidden;
+  min-height: 100%;
+  padding: 50px;
+}
+
+.block {
+}
+
+.block__row {
+  display: flex;
+  /* display: inline-flex - строчный flex-контейнер
+  очень удобно работать если нужно ограничить ширину контейнера по содержимому и выстроить по центру с помощью text-align: center, примененного к родительскому элементу*/
+  /* display: inline-flex; */
+  /* justify-content: flex-start; - значение по умолчанию */
+  justify-content: space-around;
+  /* align-items: stretch; - значение по умолчанию. Это свойство растягивает все элементы по высоте (ширине) наиболее высокого (широкого) элемента*/
+
+  border: 20px solid #ece89d;
+  margin: 0 0 20px 0;
+}
+
+.block__column {
+  border: 20px solid #5e5373;
+}
+
+.block__item {
+  background-color: #18b5a4;
+  padding: 50px;
+  color: white;
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.block__list {
+  display: flex;
+  align-items: center;
+}
+
+.block__list li {
+  list-style: none;
+  margin-right: 20px;
+}
+
+.block__list li:last-child {
+  margin-right: 0;
+}
+
+.block__info {
+  position: relative;
+  padding: 0 0px 0 20px;
+}
+
+.block__info_y:before,
+.block__info_p:before,
+.block__info_g:before {
+  position: absolute;
+  content: "";
+  top: 0px;
+  left: 0;
+  width: 15px;
+  height: 15px;
+}
+
+.block__info_y:before {
+  background-color: #ece89d;
+}
+
+.block__info_p:before {
+  background-color: #5e5373;
+}
+
+.block__info_g:before {
+  background-color: #18b5a4;
+}
