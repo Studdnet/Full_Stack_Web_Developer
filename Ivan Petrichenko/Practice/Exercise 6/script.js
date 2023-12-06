@@ -43,13 +43,10 @@ function getMathResult(num, arg) {
   let sum = 0;
   for (let i = 1; i <= arg; i++) {
     sum += num;
-    if (i < arg) {
-      str += `${sum}---`;
-    } else {
-      str += `${sum}`;
-    }
+    i < arg ? (str += `${sum}--`) : (str += `${sum}`);
   }
   return str;
 }
 
 console.log(getMathResult(5, 3));
+console.log(getMathResult(2, 10));
