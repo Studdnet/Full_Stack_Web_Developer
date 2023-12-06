@@ -52,4 +52,4 @@ function getMathResult(num, arg) {
   return str;
 }
 
-getMathResult(5, 3);
+console.log(getMathResult(5, 3));
