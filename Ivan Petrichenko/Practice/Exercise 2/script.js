@@ -1,77 +1,59 @@
-// При помощи цикла выведите числа от 5 до 10 в консоль.
-// 5 и 10 включительно. Цикл можно использовать любой
+/* Задание на урок:
 
-function firstTask() {
-  let n = 5;
-  while (n <= 10) {
-    console.log(n);
-    n++;
+1) Автоматизировать вопросы пользователю про фильмы при помощи цикла
+
+2) Сделать так, чтобы пользователь не мог оставить ответ в виде пустой строки,
+отменить ответ или ввести название фильма длинее, чем 50 символов. Если это происходит - 
+возвращаем пользователя к вопросам опять
+
+3) При помощи условий проверить  personalMovieDB.count, и если он меньше 10 - вывести сообщение
+"Просмотрено довольно мало фильмов", если от 10 до 30 - "Вы классический зритель", а если больше - 
+"Вы киноман". А если не подошло ни к одному варианту - "Произошла ошибка"
+
+4) Потренироваться и переписать цикл еще двумя способами*/
+
+"use strict";
+
+let numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?", "");
+let personalMovieDB = {
+  count: numberOfFilms,
+  movies: {},
+  actors: {},
+  genres: [],
+  private: false,
+};
+
+for (let i = 1; i <= 2; i++) {
+  let lastFilm = prompt("Один из последних просмотренных фильмов?", "");
+  if (lastFilm === "" || lastFilm === null || lastFilm.length > 50) {
+    alert("Название фильма не может быть пустой строкой или быть длинее 50 символов. Давайте попробуем еще раз.");
+    i--;
+    continue;
   }
+  let qualityFilm = prompt("На сколько оцените его?", "");
+  if (qualityFilm === "" || qualityFilm === null) {
+    alert("Оценка фильма не может быть пустой строкой или не может быть отменена. Давайте попробуем еще раз сначала.");
+    i--;
+    continue;
+  }
+  personalMovieDB.movies[lastFilm] = qualityFilm;
 }
 
-firstTask();
-
-/* При помощи цикла for вывести числа от 20 до 10 в консоль. В обратном порядке (20, 19, 18...).
-Когда цикл дойдет до числа 13 - остановить весь цикл */
-
-function secondTask() {
-  for (let i = 20; i >= 10; i--) {
-    if (i === 13) break;
-    console.log(i);
-  }
+if (personalMovieDB.count > 0 && personalMovieDB.count < 10) {
+  alert("Просмотрено очень мало фильмов. У вас все еще впереди.");
+  alert("Спасибо за участие");
+}
+if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+  alert("Вы классический зритель");
+  alert("Спасибо за участие");
+}
+if (personalMovieDB.count >= 30) {
+  alert("Да вы просто меломан!!!");
+  alert("Спасибо за участие");
 }
 
-secondTask();
-
-// При помощи цикла for выведите чётные числа от 2 до 10 включительно
-
-function thirdTask() {
-  for (let i = 2; i <= 10; i++) {
-    if (i % 2 === 0) {
-      console.log(i);
-    }
-  }
+if (personalMovieDB.count === "" || personalMovieDB.count === null || personalMovieDB.count <= 0) {
+  alert("Что-то пошло не так!");
 }
 
-thirdTask();
-
-/* Перепишите цикл  for на вариант с while. Результат должен остаться точно таким же. 
-Не создайте бесконечный цикл! Иначе браузер может зависнуть. */
-/* for (let i = 2; i <= 16; i++) {
-		if (i % 2 === 0) {
-			continue;
-		} else {
-			console.log(i);
-		}
-	} */
-
-function fourthTask() {
-  let n = 2;
-  while (n < 16) {
-    n++;
-    if (n % 2 === 0) {
-      continue;
-    } else {
-      console.log(n);
-    }
-  }
-}
-
-fourthTask();
-
-/* Заполните массив цифрами от 5 до 10 включительно. Помните, 
-что элементы массива можно сформировать так же, как и обращаться к ним: arr[0] */
-
-function fifthTask() {
-  const num = 5;
-  const arrayOfNumbers = [];
-  for (let i = 0; i <= num; i++) {
-    arrayOfNumbers[i] = i + num;
-  }
-  console.log(arrayOfNumbers);
-
-  // Не трогаем
-  return arrayOfNumbers;
-}
-
-fifthTask();
+console.log(personalMovieDB);
