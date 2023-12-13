@@ -18,19 +18,45 @@ function fib(num) {
     return console.log("Ошибка");
   }
   let arr = [];
-  for (let i = 0; i <= num; i++) {
+  for (let i = 0; i < num; i++) {
     if (i === 0 || i === 1) {
       arr.push(i);
+      continue;
     }
-    for (let j = i; j <= i + 1; j++) {
-      let sum = arr[j - 1] + arr[j];
+    for (let j = 0; j < 1; j++) {
+      let sum = arr[i - 2] + arr[i - 1];
       arr.push(sum);
     }
   }
-  return console.log(arr);
+  return console.log(arr.join(" "));
 }
 
-fib(5);
+fib(7);
+
+/* function fib(num) {
+    if (typeof(num) !== 'number' || num <= 0 || !Number.isInteger(num)) {
+        return "";
+    }
+
+    let result = '';
+    let first = 0;
+    let second = 1;
+
+    for (let i = 0; i < num; i++) {
+        if (i + 1 === num) {
+            result += `${first}`;
+            // Без пробела в конце
+        } else {
+            result += `${first} `;
+        }
+
+        let third = first + second;
+        first = second;
+        second = third;
+    }
+
+    return result;
+} */
 
 // Просуммировать все члены массива
 
