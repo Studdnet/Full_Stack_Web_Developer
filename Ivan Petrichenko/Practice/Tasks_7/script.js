@@ -17,11 +17,20 @@ function fib(num) {
   if (typeof num !== "number" || !Number.isInteger(num) || num <= 0) {
     return console.log("Ошибка");
   }
-  let str = "0";
-  return console.log(str);
+  let arr = [];
+  for (let i = 0; i <= num; i++) {
+    if (i === 0 || i === 1) {
+      arr.push(i);
+    }
+    for (let j = i; j <= i + 1; j++) {
+      let sum = arr[j - 1] + arr[j];
+      arr.push(sum);
+    }
+  }
+  return console.log(arr);
 }
 
-fib(2);
+fib(5);
 
 // Просуммировать все члены массива
 
@@ -76,5 +85,36 @@ sumArrays(price, money);
 /* Написать функцию, которая к членам первого массива добавляет 
 значение всех членов второго массива поочередно*/
 
-/* Написать функцию, которая создает новый массив и заполняет его значениями из старого массива - складывает значение текущего члена массива
+function firstMemberSum(arr1, arr2) {
+  for (let i = 0; i < arr1.length; i++) {
+    let sum = arr1[i];
+    for (let j = 0; j < arr2.length; j++) {
+      sum += arr2[j];
+    }
+    arr1[i] = sum;
+  }
+  return console.log(arr1);
+}
+
+firstMemberSum([1, 5, 10], [2, 15, 20]);
+
+/* Написать функцию, которая создает новый массив и заполняет его 
+значениями из старого массива - складывает значение текущего члена массива
  с предыдущим и добавляет это значение в новый массив.*/
+
+function addArrayMember(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (i === 0) {
+      newArr.push(arr[i]);
+      continue;
+    }
+    let sum = arr[i] + arr[i - 1];
+    newArr.push(sum);
+  }
+  return console.log(newArr);
+}
+
+let num = [0, 1, 2, 3, 4, 5];
+
+addArrayMember(num);
