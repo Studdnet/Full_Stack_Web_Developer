@@ -78,3 +78,9 @@ truncate("Всем привет!", 20);
 Например:
 alert( extractCurrencyValue('$120') === 120 ); // true
  */
+
+function extractCurrencyValue(str) {
+  return console.log(+str.slice(1));
+}
+
+extractCurrencyValue("$120");
