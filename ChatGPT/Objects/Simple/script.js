@@ -29,3 +29,47 @@
 Измените значение какого-то свойства в anotherPerson.
 Выведите оба объекта в консоль для проверки. 
  */
+
+const person = {
+  name: "Иван",
+  age: "39",
+  city: "Гродно",
+};
+
+console.log(`Меня зовут ${person.name}. Мне ${person.age} лет. Я живу в ${person.city}.`);
+
+person.age = "40";
+console.log(person.age);
+
+person.gender = "male";
+
+console.log(person.gender);
+delete person.city;
+console.log(person);
+
+for (let key in person) {
+  console.log(`Свойство ${key} имеет значение ${person[key]}`);
+}
+
+let arr = [];
+for (let key in person) {
+  arr.push(person[key]);
+}
+
+console.log(arr);
+
+const anotherPerson = {};
+
+for (let key in person) {
+  anotherPerson[key] = person[key];
+}
+
+anotherPerson.name = "Игорь";
+
+somePerson = Object.assign({}, anotherPerson);
+
+somePerson.age = 41;
+
+console.log(person);
+console.log(anotherPerson);
+console.log(somePerson);
