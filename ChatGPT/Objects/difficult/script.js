@@ -29,3 +29,35 @@
 Создайте объект с различными типами данных в свойствах (число, строка, массив, объект).
 Используя JSON.stringify(), преобразуйте объект в строку JSON.
 Выведите строку JSON в консоль. */
+
+const person = {
+  "first name": "Igor",
+  "second name": "Cheribulko",
+  country: "Belarus",
+  age: 41,
+  language: ["русский", "белорусский", "english", "polish", "ukrainian"],
+};
+
+function originalObject(obj) {
+  if (obj === null || typeof obj !== "object") {
+    return obj;
+  }
+
+  let copy = Array.isArray(obj) ? [] : {};
+
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      copy[key] = originalObject(obj[key]);
+    }
+  }
+
+  return copy;
+}
+
+const anotherPerson = originalObject(person);
+
+console.log(anotherPerson);
+
+anotherPerson["first name"] = "Ivan";
+
+console.log(anotherPerson);
