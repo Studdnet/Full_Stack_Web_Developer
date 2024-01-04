@@ -95,15 +95,12 @@ const car = {
 let arrKey = ["color", "model", "volume", "age"];
 
 function filterObject(obj, arr) {
-  let newObj = {};
-  const filteredObject = Object.keys(obj).reduce((acc, key) => {
+  return Object.keys(obj).reduce((result, key) => {
     if (arr.includes(key)) {
-      acc[key] = obj[key];
+      result[key] = obj[key];
     }
-    newObj = acc;
-    return newObj;
+    return result;
   }, {});
-  return newObj;
 }
 console.log(filterObject(car, arrKey));
 
@@ -112,16 +109,36 @@ console.log(filterObject(car, arrKey));
 Создайте конструктор Person, который принимает параметры name и age и создает объект с этими свойствами.
 Добавьте метод greet, который выводит в консоль приветствие, используя имя объекта.
 Создайте несколько экземпляров Person и вызовите их метод greet.
+*/
 
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+Person.prototype.greet = function () {
+  console.log("Hello, my name is " + this.name);
+};
+
+let userIvan = new Person("Иван", 39);
+userIvan.greet();
+
+console.log(userIvan);
+
+/*
 5.Вычисляемые свойства:
 Создайте объект triangle с полями base и height.
 Добавьте вычисляемое свойство area, которое возвращает площадь треугольника (площадь = 0.5 * основание * высота).
 Выведите в консоль площадь треугольника.
+*/
 
+/*
 6.Сравнение объектов:
 Напишите функцию compareObjects, которая принимает два объекта и возвращает true, если они имеют одинаковые свойства и значения, и false в противном случае.
 Протестируйте функцию на разных объектах.
+*/
 
+/*
 7.Преобразование в JSON:
 Создайте объект с различными типами данных в свойствах (число, строка, массив, объект).
 Используя JSON.stringify(), преобразуйте объект в строку JSON.
