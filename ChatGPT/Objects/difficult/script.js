@@ -132,10 +132,64 @@ console.log(userIvan);
 Выведите в консоль площадь треугольника.
 */
 
+const triangle = {
+  base: 2,
+  height: 4,
+  get area() {
+    return 0.5 * this.base * this.height;
+  },
+};
+
+console.log(triangle.area);
+
 /*
 6.Сравнение объектов:
 Напишите функцию compareObjects, которая принимает два объекта и возвращает true, если они имеют одинаковые свойства и значения, и false в противном случае.
 Протестируйте функцию на разных объектах.
+*/
+
+const fruits1 = {
+  apple: 1,
+  peach: 10,
+  orange: 2,
+};
+
+const fruits2 = {
+  apple: 1,
+  peach: 9,
+  orange: 2,
+};
+
+/* Простое сравнение */
+function compareObjects(obj1, obj2) {
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  for (let key of keys1) {
+    if (obj1[key] !== obj2[key]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+console.log(compareObjects(fruits1, fruits2));
+
+/* Для осуществление процедуры глубокого сравнения можно воспользоваться 
+библиотекой Lodash 
+
+const _ = require('lodash');
+
+let obj1 = { a: 1, b: { c: 2 } };
+let obj2 = { a: 1, b: { c: 2 } };
+
+let areEqual = _.isEqual(obj1, obj2);
+console.log(areEqual); // Выведет: true
 */
 
 /*
@@ -143,3 +197,17 @@ console.log(userIvan);
 Создайте объект с различными типами данных в свойствах (число, строка, массив, объект).
 Используя JSON.stringify(), преобразуйте объект в строку JSON.
 Выведите строку JSON в консоль. */
+
+const superMen = {
+  height: 194,
+  weight: 94,
+  property: ["car", "house", "bike"],
+  hair: "brown",
+  car: "betCar",
+  money: "very reach",
+};
+
+let strSuperMen = JSON.stringify(superMen);
+// let strSuperMen = JSON.stringify(superMen, null, 2);
+
+console.log(strSuperMen);
