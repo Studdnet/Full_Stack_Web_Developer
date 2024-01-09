@@ -59,4 +59,17 @@ RUB
 - Данные для первого аргумента должны приходить сразу из двух банков, причем сначала baseCurrencies, потом additionalCurrencies по порядку
  */
 
-function availableCurr(arr, missingCurr) {}
+function availableCurr(arr, missingCurr) {
+  let str = "";
+  arr.length === 0 ? (str = "Нет доступный валют") : (str = "Доступные валюты:\n");
+  arr.forEach((item, index, arr) => {
+    if (item.includes(missingCurr)) {
+    } else {
+      str += `${item}\n`;
+    }
+  });
+  return console.log(str);
+}
+
+availableCurr(["UAH", "RUB", "CNY"], "CNY");
+availableCurr([], "CNY");
