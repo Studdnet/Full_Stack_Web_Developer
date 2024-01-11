@@ -61,10 +61,11 @@ RUB
 
 function availableCurr(arr, missingCurr) {
   let str = "";
-  arr.length === 0 ? (str = "Нет доступный валют") : (str = "Доступные валюты:\n");
+  arr.length === 0
+    ? (str = "Нет доступный валют")
+    : (str = "Доступные валюты:\n");
   arr.forEach((item, index, arr) => {
-    if (item.includes(missingCurr)) {
-    } else {
+    if (item !== missingCurr) {
       str += `${item}\n`;
     }
   });
