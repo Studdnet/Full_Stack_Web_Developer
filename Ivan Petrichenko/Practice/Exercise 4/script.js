@@ -31,7 +31,7 @@ let personalMovieDB = {
   },
   writeYourGenres: function () {
     for (let i = 1; i <= 3; i++) {
-      let genresOfMovie = prompt(`Ваш любимый жанр под номером ${i}`);
+      let genresOfMovie = prompt(`Ваш любимый жанр под номером ${i}`).toLowerCase();
       if (genresOfMovie == "" || genresOfMovie.length > 20 || genresOfMovie == null) {
         alert(`Что-то пошло не так! Повторяем вопрос №${i}`);
         i--;
