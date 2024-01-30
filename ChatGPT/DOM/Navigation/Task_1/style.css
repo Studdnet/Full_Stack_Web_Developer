@@ -1,0 +1,44 @@
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.grayBG {
+  background-color: lightgray;
+}
+
+h1 {
+  color: green;
+}
+
+.wrapper {
+  width: 800px;
+  background-color: #ff0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+ul li {
+  margin-top: 15px;
+}
+
+ul li:first-child {
+  margin-top: 0;
+}
+
+ul li:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.center {
+  text-align: center;
+}
+
+.red {
+  color: red;
+}
