@@ -33,3 +33,24 @@ Example Output 2
 Not leap year.
 
 */
+
+function isLeap(year) {
+  /**************Don't change the code above****************/
+  let answer = "Not leap";
+  if (year % 4 === 0) {
+    answer = "Leap";
+  }
+  if (year % 100 === 0) {
+    answer = "Not leap";
+  }
+  if (year % 400 === 0) {
+    answer = "Leap";
+  }
+  return console.log(answer);
+  /**************Don't change the code below****************/
+}
+
+isLeap(1948);
+isLeap(2100);
+isLeap(1998);
+isLeap(20);
