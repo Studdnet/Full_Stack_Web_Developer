@@ -2,14 +2,19 @@
 
 let dicee = document.querySelectorAll("img");
 let titleWinner = document.querySelector("h1");
+let button = document.querySelector("button");
 
-let playerOne = randomNumber();
-let playerTwo = randomNumber();
+button.addEventListener("click", diceDraw);
 
-dicee[0].setAttribute("src", `images/dice${playerOne}.png`);
-dicee[1].setAttribute("src", `images/dice${playerTwo}.png`);
+function diceDraw() {
+  let playerOne = randomNumber();
+  let playerTwo = randomNumber();
 
-winner(playerOne, playerTwo);
+  dicee[0].setAttribute("src", `images/dice${playerOne}.png`);
+  dicee[1].setAttribute("src", `images/dice${playerTwo}.png`);
+
+  winner(playerOne, playerTwo);
+}
 
 function randomNumber() {
   let randomNumber = Math.floor(Math.random() * 6) + 1;
