@@ -1,7 +1,7 @@
 "use strict";
 
 let buttons = document.querySelectorAll(".drum");
-let backgroundColorButtons = ["white", "red", "purple", "orange", "blue", "green", "lightgreen"];
+let backgroundColorButtons = ["red", "purple", "orange", "blue", "green", "lightgreen"];
 const soundsArr = [
   "sounds/crash.mp3",
   "sounds/kick-bass.mp3",
