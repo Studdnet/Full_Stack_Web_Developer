@@ -3,6 +3,9 @@
   --red: red;
   --purple: purple;
   --orange: orange;
+  --blue: blue;
+  --green: green;
+  --lightgreen: lightgreen;
 }
 
 body {
@@ -77,4 +80,11 @@ footer {
   text-align: center;
   margin: 10px;
   background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+}
+
+.hoverEffect:hover {
+  width: 200px;
+  height: 200px;
 }
