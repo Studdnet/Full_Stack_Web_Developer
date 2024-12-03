@@ -26,3 +26,36 @@ attackers=[ 1, 3, 5, 7 ]   defenders=[ 2, 4, 0, 8 ]
 return true
 
 */
+
+function hasSurvived(attackers, defenders) {
+  let powerAttackers = attackers.reduce((acc, elem) => acc + elem, 0); // сумма силы атакующих
+  let powerDefenders = defenders.reduce((acc, elem) => acc + elem, 0); // сумма силы обороны
+  let surDef = [];
+  let surAt = [];
+  let mainArr = [];
+
+  if (defenders.length <= attackers.length) {
+    mainArr = attackers;
+  } else {
+    mainArr = defenders;
+  }
+
+  for (let i = 0; i <= mainArr.length - 1; i++) {
+    if (defenders[i] > attackers[i] || attackers[i] == undefined) {
+      surDef.push(defenders[i]);
+    } else if (attackers[i] > defenders[i] || defenders[i] == undefined) {
+      surAt.push(attackers[i]);
+    }
+  }
+
+  if (surDef.length == surAt.length) {
+    return powerDefenders >= powerAttackers ? console.log("True") : console.log("False");
+  }
+  if (surDef.length > surAt.length) {
+    return console.log("true");
+  } else {
+    return console.log("false");
+  }
+}
+
+hasSurvived([8], [2, 9, 9]);
