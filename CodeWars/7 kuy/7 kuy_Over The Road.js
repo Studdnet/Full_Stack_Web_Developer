@@ -24,3 +24,34 @@ If you are timing out, running out of memory, or get any kind of "error", read o
 
 To solve this, you need to think of a way to do the kata without making massive lists or huge for loops. Read the discourse for some inspiration :)
 */
+
+function overTheRoad(address, n) {
+  //code here
+  //   let arrOdd = [];
+  //   let arrEven = [];
+  //   for (let i = 1; i <= n * 2; i++) {
+  //     i % 2 !== 0 ? arrOdd.push(i) : arrEven.push(i);
+  //   }
+  //   let arr = arrEven.reverse();
+
+  //   if (address % 2 !== 0) {
+  //     for (let i = 0; i <= arrOdd.length - 1; i++) {
+  //       if (arrOdd[i] === address) {
+  //         return console.log(arrEven[i]);
+  //       }
+  //     }
+  //   } else {
+  //     for (let i = 0; i <= arrEven.length - 1; i++) {
+  //       if (arrEven[i] === address) {
+  //         return console.log(arrOdd[i]);
+  //       }
+  //     }
+  //   }
+
+  return console.log(n * 2 - address + 1);
+}
+
+overTheRoad(1, 3);
+overTheRoad(3, 3);
+overTheRoad(2, 3);
+overTheRoad(7, 11);
