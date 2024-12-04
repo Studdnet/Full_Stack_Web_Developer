@@ -15,3 +15,30 @@ fill_gaps([null,1,null]) -> [null,1,null] # No replacement if ends don't match o
 fill_gaps(['codewars', null, null, 'codewars', 'real work', null, null, 'real work']) -> ["codewars", "codewars", "codewars", "codewars", "real work", "real work", "real work", "real work"] # Works with strings too
 
 */
+
+let arr = [1, null, null, 1, 1];
+
+function fillGaps(timesheet) {
+  let indexNull = [];
+  for (let i = 0; i <= timesheet.length - 1; i++) {
+    let replaceNull = timesheet[i - 1];
+    if (timesheet[i] === null) {
+      let n = i;
+      while (timesheet[n] === null && n <= timesheet.length - 1) {
+        console.log(n);
+
+        indexNull.push(n);
+        n++;
+      }
+      i = n;
+    }
+  }
+  for (let j = indexNull[0]; j <= indexNull.length - 1; j++) {
+    timesheet.splice(timesheet[j], 1, 2);
+    console.log(`Позиция null: ${j}`);
+  }
+  console.log(`Поймали null. Его позиции ${indexNull}`);
+  return timesheet;
+}
+
+console.log(fillGaps(arr));
