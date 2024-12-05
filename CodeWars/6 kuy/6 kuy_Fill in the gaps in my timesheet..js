@@ -16,31 +16,27 @@ fill_gaps(['codewars', null, null, 'codewars', 'real work', null, null, 'real wo
 
 */
 
-let arr = [15, null, null, 1, 8, 10, 1, null, 58, null, 18];
+let arr = [1, null, null, 1, 8, 10, 1, null, 18, null, null, 18];
 
 function fillGaps(timesheet) {
-  let indexNull = [];
   for (let i = 0; i <= timesheet.length - 1; i++) {
-    let indexNull = 0;
-
+    let mountNull = 0;
+    let indexNull = [];
+    let endIndex = 0;
     if (timesheet[i] === null) {
-      for (let j = i; j <= timesheet.length - 1; j++) {
-        indexNull++;
-        if (timesheet[j] !== null) {
-          //   timesheet.splice(timesheet[i], indexNull, timesheet[i - 1]);
-          break;
-        }
-        console.log(indexNull);
+      let j = i;
+      while (timesheet[j] === null) {
+        indexNull.push(j);
+        mountNull++;
+        j++;
+        endIndex = j;
       }
-
-      //   let n = i;
-      //   while (timesheet[n] === null && n <= timesheet.length - 1) {
-      //     indexNull.push(n);
-      //     n++;
-      //   }
     }
+    if (timesheet[i - 1] === timesheet[endIndex]) {
+      timesheet.splice(timesheet[i], mountNull, timesheet[i - 1]);
+    }
+    i = i + mountNull;
   }
-  //   console.log(`Поймали null. Его позиции ${indexNull}`);
   return timesheet;
 }
 
