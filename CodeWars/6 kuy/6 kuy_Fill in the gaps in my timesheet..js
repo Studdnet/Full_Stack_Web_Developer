@@ -22,10 +22,8 @@ function fill_gaps(timesheet) {
   for (let i = 0; i <= timesheet.length - 1; i++) {
     let mountNull = 0;
     let indexNull = [];
-    let startIndex = 0;
     let endIndex = 0;
     if (timesheet[i] === null) {
-      startIndex = i;
       let j = i;
       while (timesheet[j] === null) {
         indexNull.push(timesheet[i - 1]);
@@ -34,8 +32,8 @@ function fill_gaps(timesheet) {
         endIndex = j;
       }
     }
-    if (timesheet[startIndex - 1] === timesheet[endIndex]) {
-      timesheet.splice(startIndex, mountNull, ...indexNull);
+    if (timesheet[i - 1] === timesheet[endIndex]) {
+      timesheet.splice(i, mountNull, ...indexNull);
     }
     i = i + mountNull;
   }
