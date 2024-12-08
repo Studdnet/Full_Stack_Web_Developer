@@ -68,14 +68,23 @@ let dec = {
 };
 
 const getTurkishNumber = (num) => {
-  //   if (toString(num) !== undefined) {
-  //     return console.log(turkishNumbers[num.toString()]);
-  //   }
+  if (ed[num.toString()] !== undefined) {
+    return ed[num.toString()];
+  }
+  if (dec[num.toString()] !== undefined) {
+    return dec[num.toString()];
+  }
+
   let arr = num.toString().split("");
+  arr[0] = (arr[0] * 10).toString();
   let str = "";
-  str = dec[arr[0]] + ed[arr[1]];
-  num = str;
-  return num;
+
+  str = dec[arr[0]] + " " + ed[arr[1]];
+  return str;
 };
 
 console.log(getTurkishNumber(10));
+console.log(getTurkishNumber(30));
+console.log(getTurkishNumber(3));
+console.log(getTurkishNumber(31));
+console.log(getTurkishNumber(89));
