@@ -39,3 +39,5 @@ const sendMessage = (message) => {
   });
   return pressCount;
 };
+
+console.log(sendMessage("hey"));
