@@ -16,28 +16,33 @@ fill_gaps(['codewars', null, null, 'codewars', 'real work', null, null, 'real wo
 
 */
 
-let arr = [1, null, null, 1, 4, 8, null, null, 8, null, null, 1];
+let arr = [1, null, 1, 2, null, 2, null];
 
 function fill_gaps(timesheet) {
-  for (let i = 0; i <= timesheet.length - 1; i++) {
+  const newTimesheet = timesheet.slice(0);
+  for (let i = 0; i <= newTimesheet.length - 1; i++) {
+    if (newTimesheet[i] === null && i === 0) {
+      continue;
+    }
     let mountNull = 0;
     let indexNull = [];
     let endIndex = 0;
-    if (timesheet[i] === null) {
+    if (newTimesheet[i] === null) {
       let j = i;
-      while (timesheet[j] === null) {
-        indexNull.push(timesheet[i - 1]);
+      while (newTimesheet[j] === null) {
+        indexNull.push(newTimesheet[i - 1]);
         mountNull++;
         j++;
         endIndex = j;
       }
     }
-    if (timesheet[i - 1] === timesheet[endIndex]) {
-      timesheet.splice(i, mountNull, ...indexNull);
+    if (newTimesheet[i - 1] === newTimesheet[endIndex]) {
+      newTimesheet.splice(i, mountNull, ...indexNull);
     }
     i = i + mountNull;
   }
-  return timesheet;
+
+  return newTimesheet;
 }
 
 console.log(fill_gaps(arr));
