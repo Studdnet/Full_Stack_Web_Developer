@@ -9,20 +9,42 @@ Examples:
 */
 
 function mysteryRange(s, n) {
-  let avr = s[0] / n;
-  console.log(avr);
+  let numbers = [];
+
+  // Пробуем все возможные способы разделения строки
+  for (let step = 1; step <= s.length; step++) {
+    numbers = [];
+    let i = 0;
+    while (i < s.length) {
+      let part = s.slice(i, i + step);
+      numbers.push(parseInt(part, 10));
+      i += step;
+    }
+    console.log(numbers);
+
+    if (numbers.length === n) break;
+  }
+
+  if (numbers.length !== n) {
+    throw new Error("Невозможно разделить строку на заданное количество частей.");
+  }
+
+  const smallest = Math.min(...numbers);
+  const largest = Math.max(...numbers);
+
+  if (largest - smallest + 1 !== n) {
+    throw new Error("Найденный диапазон не соответствует заданному числу n.");
+  }
+
+  return [smallest, largest];
 }
 
-function splitStringIntoNParts(str, n) {
-  let length = str.length;
-  let partSize = Math.ceil(length / n);
-  // Размер каждой части
-  let parts = [];
-  for (let i = 0; i < length; i += partSize) {
-    parts.push(str.substring(i, i + partSize));
-  }
-  return parts;
-}
+// Пример использования:
 let inputString = "1568141291110137";
-let result = splitStringIntoNParts(inputString, 10).map(Number);
-console.log(result); // [15, 6, 8, 14, 12, 9, 11, 10, 13, 7]
+const rangeSize = 10;
+try {
+  const result = mysteryRange(inputString, rangeSize);
+  console.log(result); // [6, 15]
+} catch (error) {
+  console.error(error.message);
+}
