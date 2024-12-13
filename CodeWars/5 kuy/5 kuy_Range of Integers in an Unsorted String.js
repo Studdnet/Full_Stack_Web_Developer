@@ -48,3 +48,17 @@ try {
 } catch (error) {
   console.error(error.message);
 }
+
+function splitStringIntoNParts(str, n) {
+  let length = str.length;
+  let partSize = Math.ceil(length / n);
+  // Размер каждой части
+  let parts = [];
+  for (let i = 0; i < length; i += partSize) {
+    parts.push(str.substring(i, i + partSize));
+  }
+  return parts;
+}
+let num = "1568141291110137";
+let result = splitStringIntoNParts(num, 10).map(Number);
+console.log(result); // [15, 6, 8, 14, 12, 9, 11, 10, 13, 7]
