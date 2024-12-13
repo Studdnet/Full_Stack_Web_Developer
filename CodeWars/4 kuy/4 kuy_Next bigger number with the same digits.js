@@ -13,5 +13,27 @@ If the digits can't be rearranged to form a bigger number, return -1 (or nil in 
 
 function nextBigger(n) {
   let str = String(n);
-  console.log(str);
+  let arrNum = str.split("").map(Number);
+
+  if (arrNum[arrNum.length - 1] > arrNum[arrNum.length - 2]) {
+    let a = arrNum[arrNum.length - 1];
+    let b = arrNum[arrNum.length - 2];
+    arrNum[arrNum.length - 1] = b;
+    arrNum[arrNum.length - 2] = a;
+  }
+
+  if (arrNum[0] < arrNum[1]) {
+    let a = arrNum[0];
+    let b = arrNum[1];
+    arrNum[0] = b;
+    arrNum[1] = a;
+  }
+
+  return Number(arrNum.join(""));
 }
+
+console.log(nextBigger(2017));
+console.log(nextBigger(513));
+console.log(nextBigger(12));
+console.log(nextBigger(414));
+console.log(nextBigger(144));

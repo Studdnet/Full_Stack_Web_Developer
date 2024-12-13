@@ -8,57 +8,53 @@ Examples:
 [['10610211511099104113100116105103101111114107108112109',18],[99,116]]
 */
 
-function mysteryRange(s, n) {
-  let numbers = [];
+function splitStringIntoSequentialChunks(str, numChunks) {
+  let result = [];
+  let chunkSize = Math.ceil(str.length / numChunks);
 
-  // Пробуем все возможные способы разделения строки
-  for (let step = 1; step <= s.length; step++) {
-    numbers = [];
-    let i = 0;
-    while (i < s.length) {
-      let part = s.slice(i, i + step);
-      numbers.push(parseInt(part, 10));
-      i += step;
+  while (result.length < numChunks && str.length > 0) {
+    let chunk = "";
+    let validChunkFound = false;
+
+    // Попробуем различные размеры частей от 1 до chunkSize
+    for (let size = 1; size <= chunkSize; size++) {
+      chunk = str.slice(0, size);
+      let chunkNum = parseInt(chunk, 10);
+
+      if (result.length > 0) {
+        let lastNum = result[result.length - 1];
+        if (chunkNum === lastNum + 1) {
+          result.push(chunkNum);
+          str = str.slice(size);
+          validChunkFound = true;
+          break;
+        }
+      } else {
+        result.push(chunkNum);
+        str = str.slice(size);
+        validChunkFound = true;
+        break;
+      }
     }
-    console.log(numbers);
 
-    if (numbers.length === n) break;
+    if (!validChunkFound) {
+      throw new Error("Невозможно разделить строку на заданное количество частей.");
+    }
   }
 
-  if (numbers.length !== n) {
+  if (result.length !== numChunks) {
     throw new Error("Невозможно разделить строку на заданное количество частей.");
   }
 
-  const smallest = Math.min(...numbers);
-  const largest = Math.max(...numbers);
+  let minRange = Math.min(...result);
+  let maxRange = Math.max(...result);
 
-  if (largest - smallest + 1 !== n) {
-    throw new Error("Найденный диапазон не соответствует заданному числу n.");
-  }
-
-  return [smallest, largest];
+  return { chunks: result, range: { min: minRange, max: maxRange } };
 }
 
-// Пример использования:
 let inputString = "1568141291110137";
-const rangeSize = 10;
-try {
-  const result = mysteryRange(inputString, rangeSize);
-  console.log(result); // [6, 15]
-} catch (error) {
-  console.error(error.message);
-}
+let numChunks = 10;
 
-function splitStringIntoNParts(str, n) {
-  let length = str.length;
-  let partSize = Math.ceil(length / n);
-  // Размер каждой части
-  let parts = [];
-  for (let i = 0; i < length; i += partSize) {
-    parts.push(str.substring(i, i + partSize));
-  }
-  return parts;
-}
-let num = "1568141291110137";
-let result = splitStringIntoNParts(num, 10).map(Number);
-console.log(result); // [15, 6, 8, 14, 12, 9, 11, 10, 13, 7]
+let result = splitStringIntoSequentialChunks(inputString, numChunks);
+console.log(result.chunks); // [15, 6, 8, 14, 12, 9, 11, 10, 13, 7]
+console.log(result.range); // { min: 6, max: 15 }
