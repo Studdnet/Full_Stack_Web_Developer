@@ -8,53 +8,41 @@ Examples:
 [['10610211511099104113100116105103101111114107108112109',18],[99,116]]
 */
 
-function splitStringIntoSequentialChunks(str, numChunks) {
-  let result = [];
-  let chunkSize = Math.ceil(str.length / numChunks);
+function mysteryRange(inputString, n) {
+  // Функция для построения последовательности чисел из строки
+  function buildSequence(start, count, str) {
+    let numbers = [];
+    let current = start;
 
-  while (result.length < numChunks && str.length > 0) {
-    let chunk = "";
-    let validChunkFound = false;
+    while (numbers.length < count && str.length > 0) {
+      let numStr = current.toString();
 
-    // Попробуем различные размеры частей от 1 до chunkSize
-    for (let size = 1; size <= chunkSize; size++) {
-      chunk = str.slice(0, size);
-      let chunkNum = parseInt(chunk, 10);
-
-      if (result.length > 0) {
-        let lastNum = result[result.length - 1];
-        if (chunkNum === lastNum + 1) {
-          result.push(chunkNum);
-          str = str.slice(size);
-          validChunkFound = true;
-          break;
-        }
+      if (str.startsWith(numStr)) {
+        numbers.push(current);
+        str = str.slice(numStr.length);
+        current++;
       } else {
-        result.push(chunkNum);
-        str = str.slice(size);
-        validChunkFound = true;
-        break;
+        return null; // Не удалось построить последовательность
       }
     }
 
-    if (!validChunkFound) {
-      throw new Error("Невозможно разделить строку на заданное количество частей.");
+    return numbers.length === count && str.length === 0 ? numbers : null;
+  }
+
+  // Перебираем все возможные начальные числа
+  for (let start = 1; start <= 100; start++) {
+    const sequence = buildSequence(start, n, inputString);
+
+    if (sequence) {
+      return [Math.min(...sequence), Math.max(...sequence)];
     }
   }
 
-  if (result.length !== numChunks) {
-    throw new Error("Невозможно разделить строку на заданное количество частей.");
-  }
-
-  let minRange = Math.min(...result);
-  let maxRange = Math.max(...result);
-
-  return { chunks: result, range: { min: minRange, max: maxRange } };
+  // Если подходящая последовательность не найдена
+  throw new Error("Не удалось разделить строку на последовательные числа");
 }
 
+// Пример использования функции
 let inputString = "1568141291110137";
-let numChunks = 10;
-
-let result = splitStringIntoSequentialChunks(inputString, numChunks);
-console.log(result.chunks); // [15, 6, 8, 14, 12, 9, 11, 10, 13, 7]
-console.log(result.range); // { min: 6, max: 15 }
+let result = mysteryRange(inputString, 10);
+console.log(result); // Ожидаемый результат: [6, 15]
