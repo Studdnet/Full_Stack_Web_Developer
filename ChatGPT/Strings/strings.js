@@ -95,3 +95,23 @@ function reverseString(str) {
 }
 
 console.log(reverseString(someString));
+
+/* 11. Палиндром
+Напишите функцию isPalindrome(str), которая принимает строку str и возвращает true, 
+если строка является палиндромом (читается одинаково слева направо и справа налево), 
+и false в противном случае.
+
+isPalindrome("radar"); // true
+isPalindrome("hello"); // false
+ */
+
+function isPalindrome(str) {
+  if (str.split("").reverse().join("") === str) {
+    return console.log("True");
+  } else {
+    return console.log("False");
+  }
+}
+
+isPalindrome("radar");
+isPalindrome("hello");
