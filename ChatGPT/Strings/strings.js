@@ -44,19 +44,54 @@ console.log(firstName.slice(0, 4));
 Замените один из символов на другой и выведите результат.
 */
 
+const str = "Привет с большого бодуна";
+const strError = "HiHiHi - NoNoNo";
+
+console.log(str.replaceAll("Привет", "Утро"));
+console.log(strError.replaceAll("Hi", "No"));
+
 /*7.Поиск подстроки:
 Создайте переменную со строкой.
 Найдите индекс (позицию) первого вхождения определенной подстроки и выведите его.
 */
 
+const student = "Igor Cheribulko";
+
+console.log(student.indexOf("Ch"));
+
 /*8.Разделение строки:
 Создайте строку, содержащую несколько слов, разделенных пробелами.
 Разделите строку на массив слов и выведите результат. */
 
+const strToArr = "Вот и пришла зима";
+
+console.log(strToArr.split(" "));
+
 /* 9. Создайте переменную со строкой. 
 Переберите строку посимвольно*/
+
+const girl = "Девушка";
+for (let i = 0; i <= girl.length - 1; i++) {
+  console.log(girl[i]);
+}
 
 /* 10. Создайте переменную со строкой.
 Напишите функцию, которая переворачивает данную строку 
 задом наперед
  */
+
+const someString = "Шла Маша по шоссе и сосала сушку";
+
+function reverseString(str) {
+  //   return str.split(" ").reverse().join(" ");
+  let tempStr = [];
+  let tempArr = str.split(" ");
+
+  for (let i = 0; i <= tempArr.length - 1; i++) {
+    tempStr[i] = tempArr[i].split("").reverse().join("");
+  }
+
+  return tempArr.join(" ");
+}
+
+console.log(reverseString(someString));
