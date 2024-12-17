@@ -91,7 +91,7 @@ function reverseString(str) {
     tempStr[i] = tempArr[i].split("").reverse().join("");
   }
 
-  return tempArr.join(" ");
+  return tempStr.reverse().join(" ");
 }
 
 console.log(reverseString(someString));
