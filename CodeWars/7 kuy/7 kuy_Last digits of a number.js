@@ -41,3 +41,31 @@ function lastDigit(n, d) {
 console.log(lastDigit(1, 1));
 console.log(lastDigit(123769, 4));
 console.log(lastDigit(1237678989, 5));
+
+function sliceLastDigit(n, d) {
+  if (d <= 0) {
+    return [];
+  }
+
+  let arr = Array.from(String(n), Number);
+
+  if (d > 0) {
+    return arr.slice(-d);
+  }
+  return arr;
+}
+
+console.log(sliceLastDigit(1, 1));
+console.log(sliceLastDigit(145485, 0));
+console.log(sliceLastDigit(123769, 4));
+console.log(sliceLastDigit(1237678989, 5));
+console.log(sliceLastDigit(1237678989, 15));
+
+/* 
+THE BEST SOLUTION
+
+function lastDigit(n, d) {
+  return (n + '').split('').splice(-d, d).map(Number);
+}
+
+*/
