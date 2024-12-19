@@ -1,3 +1,5 @@
+"use strict";
+
 /* 
 1. Объединение строк:
 Создайте две переменные, содержащие строки (например, str1 и str2).
@@ -115,3 +117,92 @@ function isPalindrome(str) {
 
 isPalindrome("radar");
 isPalindrome("hello");
+
+/* 12. Подсчет гласных
+Задача:
+Создайте функцию countVowels(str), которая принимает строку и 
+возвращает количество гласных букв (a, e, i, o, u).
+
+countVowels("javascript"); // 3
+countVowels("hello world"); // 3
+*/
+
+function countVowels(str) {
+  let count = 0;
+  for (let i = 0; i <= str.length - 1; i++) {
+    if (str[i].match(/[aeiou]/g)) {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(countVowels("JavaScript"));
+console.log(countVowels("hello world"));
+console.log(countVowels("hello world again"));
+
+/* 13. Реверс слов в строке
+Напишите функцию reverseWords(sentence), которая принимает строку sentence, 
+состоящую из слов, разделенных пробелами, и возвращает строку, где все слова 
+идут в обратном порядке.
+Пример:
+reverseWords("Hello World"); // "World Hello"
+reverseWords("JavaScript is fun"); // "fun is JavaScript"
+*/
+
+function reverseWords(str) {
+  return str.split(" ").reverse().join(" ");
+}
+
+console.log(reverseWords("hello world again"));
+
+/* 14. Нахождение уникальных символов
+Напишите функцию getUniqueChars(str), которая принимает строку и 
+возвращает строку, состоящую только из уникальных символов 
+(символов, которые встречаются в строке ровно один раз).
+
+Пример:
+getUniqueChars("javascript"); // "jvscrip"
+getUniqueChars("hello"); // "heo"
+ */
+
+function getUniqueChars(str) {
+  for (let i = 0; i <= str.length - 1; i++) {
+    for (let j = i + 1; j <= str.length - 1; j++) {
+      if (str[i] === str[j]) {
+        let regex = new RegExp(str[i], "g");
+        str = str.replace(regex, "");
+        i = 0;
+        j = i + 1;
+      }
+    }
+  }
+  return str;
+}
+console.log(getUniqueChars("JavaScript"));
+console.log(getUniqueChars("Hello world"));
+console.log(getUniqueChars("Hello Hello hello"));
+console.log(getUniqueChars("Universe sister"));
+
+// Решение через объекты
+
+/* function getUniqueChars(str) {
+  // Создаём объект для подсчёта количества вхождений каждого символа
+  const charCount = {};
+
+  // Считаем количество каждого символа в строке
+  for (const char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  // Фильтруем только те символы, которые встречаются ровно один раз
+  const uniqueChars = [...str].filter((char) => charCount[char] === 1);
+
+  // Преобразуем массив уникальных символов обратно в строку
+  return uniqueChars.join("");
+}
+
+// Пример использования:
+const input = "hello world";
+const result = getUniqueChars(input);
+console.log(result); // "he wrd" */
