@@ -186,7 +186,7 @@ console.log(getUniqueChars("Universe sister"));
 
 // Решение через объекты
 
-/* function getUniqueChars(str) {
+function getUniqueCharsObj(str) {
   // Создаём объект для подсчёта количества вхождений каждого символа
   const charCount = {};
 
@@ -204,5 +204,6 @@ console.log(getUniqueChars("Universe sister"));
 
 // Пример использования:
 const input = "hello world";
-const result = getUniqueChars(input);
-console.log(result); // "he wrd" */
+const result = getUniqueCharsObj(input);
+console.log(getUniqueCharsObj("Universe sister"));
+console.log(result); // "he wrd"
