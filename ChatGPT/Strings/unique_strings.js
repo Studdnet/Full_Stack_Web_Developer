@@ -5,13 +5,28 @@
 
 Пример:
 findUniqueCharacters("programming"); // "poai"
-findUniqueCharacters("abracadabra"); // "c"
+findUniqueCharacters("abracadabra"); // "cd"
 findUniqueCharacters("aabbcc"); // ""
  */
 
+function findUniqueCharacters(str) {
+  let charCount = {};
+  for (const char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+  const uniqueChars = [...str].filter((char) => charCount[char] === 1);
+
+  return uniqueChars.join("");
+}
+
+console.log(findUniqueCharacters("programming"));
+console.log(findUniqueCharacters("abracadabra"));
+console.log(findUniqueCharacters("aabbcc"));
+
 /* 
 Задача 2: Подсчитать количество каждого символа
-Напишите функцию countCharacters(str), которая принимает строку и возвращает объект, где ключи — это символы строки, а значения — количество их вхождений.
+Напишите функцию countCharacters(str), которая принимает строку и 
+возвращает объект, где ключи — это символы строки, а значения — количество их вхождений.
 
 Пример:
 countCharacters("hello"); // { h: 1, e: 1, l: 2, o: 1 }
