@@ -33,6 +33,17 @@ countCharacters("hello"); // { h: 1, e: 1, l: 2, o: 1 }
 countCharacters("abracadabra"); // { a: 5, b: 2, r: 2, c: 1, d: 1 }
 */
 
+function countCharacters(str) {
+  const charCount = {};
+  for (const char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+  return charCount;
+}
+
+console.log(countCharacters("hello"));
+console.log(countCharacters("abracadabra"));
+
 /* 
 Задача 3: Найти символы, встречающиеся более одного раза
 Напишите функцию findDuplicateCharacters(str), которая возвращает строку, 
