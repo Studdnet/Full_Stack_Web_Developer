@@ -1,7 +1,8 @@
 "use strict";
 /* 
 Задача 1: Найти уникальные символы в строке
-Напишите функцию findUniqueCharacters(str), которая принимает строку и возвращает строку, состоящую только из уникальных символов (встречающихся ровно один раз).
+Напишите функцию findUniqueCharacters(str), которая принимает строку и возвращает строку, состоящую 
+только из уникальных символов (встречающихся ровно один раз).
 
 Пример:
 findUniqueCharacters("programming"); // "poai"
@@ -54,6 +55,21 @@ findDuplicateCharacters("programming"); // "rgm"
 findDuplicateCharacters("abracadabra"); // "ab"
 findDuplicateCharacters("abcdef"); // ""
  */
+
+function findDuplicateCharacters(str) {
+  const charCount = {};
+  for (const char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  const duplicateChars = Object.entries(charCount)
+    .filter(([key, value]) => value > 1)
+    .map(([key, value]) => key)
+    .join("");
+  return duplicateChars;
+}
+
+console.log(findDuplicateCharacters("programming"));
 
 /* 
 Задача 4: Проверить строку на изоморфность
@@ -127,3 +143,12 @@ findUniqueCharIndexes("abracadabra"); // [6]
 findUniqueCharIndexes("aabbcc"); // []
 
 */
+
+const obj = { a: 5, b: 15, c: 20, d: 8 };
+
+// Фильтруем значения
+const filteredValues = Object.entries(obj)
+  .filter(([key, value]) => value > 10)
+  .map(([key, value]) => value);
+
+console.log(filteredValues); // [15, 20]
