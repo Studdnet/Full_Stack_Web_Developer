@@ -86,6 +86,50 @@ isIsomorphic("foo", "bar"); // false
 isIsomorphic("paper", "title"); // true
  */
 
+function isIsomorphic(str1, str2) {
+  // Если строки разной длины, они не могут быть изоморфными
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
+  const map1 = {}; // Словарь для отображения символов из str1 в str2
+  const map2 = {}; // Словарь для обратного отображения символов из str2 в str1
+
+  // Проходим по всем символам строк
+  for (let i = 0; i < str1.length; i++) {
+    const char1 = str1[i]; // Текущий символ из str1
+    const char2 = str2[i]; // Текущий символ из str2
+
+    // Если char1 уже отображён, проверяем, соответствует ли он текущему char2
+
+    if (map1[char1]) {
+      if (map1[char1] !== char2) {
+        // Если отображение не совпадает, строки не изоморфны
+        return false;
+      }
+    } else {
+      // Если char1 ещё не отображён, добавляем его в словарь map1
+      map1[char1] = char2;
+    }
+
+    // Если char2 уже отображён, проверяем, соответствует ли он текущему char1
+    if (map2[char2]) {
+      if (map2[char2] !== char1) {
+        // Если отображение не совпадает, строки не изоморфны
+        return false;
+      }
+    } else {
+      // Если char2 ещё не отображён, добавляем его в словарь map2
+      map2[char2] = char1;
+    }
+  }
+
+  // Если цикл завершился без конфликтов, строки изоморфны
+  return true;
+}
+
+console.log(isIsomorphic("egg", "add"));
+
 /* 
 Задача 5: Найти самый частый символ
 Напишите функцию findMostFrequentChar(str), которая возвращает символ, 
