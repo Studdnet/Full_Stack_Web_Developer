@@ -141,6 +141,28 @@ findMostFrequentChar("abracadabra"); // "a"
 findMostFrequentChar("mississippi"); // "i" (или "s")
 */
 
+function findMostFrequentChar(str) {
+  const charCount = {};
+
+  for (const char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+  let maxKey = null; // Переменная для хранения ключа с максимальным значением
+  let maxValue = -Infinity; // Изначально максимальное значение самое маленькое
+
+  for (const [key, value] of Object.entries(charCount)) {
+    if (value > maxValue) {
+      maxValue = value; // Обновляем максимальное значение
+      maxKey = key; // Обновляем соответствующий ключ
+    }
+  }
+
+  return maxKey; // Возвращаем ключ с максимальным значением
+}
+
+console.log(findMostFrequentChar("hello"));
+console.log(findMostFrequentChar("mississippi"));
+
 /* 
 Задача 6: Удалить повторяющиеся символы
 Напишите функцию removeDuplicates(str), которая возвращает строку без 
