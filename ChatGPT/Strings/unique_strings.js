@@ -174,6 +174,14 @@ removeDuplicates("abracadabra"); // "abrcd"
 removeDuplicates("aabbcc"); // "abc"
  */
 
+function removeDuplicates(str) {
+  const arr = str.split("");
+  return [...new Set(arr)].join("");
+}
+
+console.log(removeDuplicates("programming"));
+console.log(removeDuplicates("abracadabra"));
+
 /* 
 Задача 7: Найти самый редкий символ
 Напишите функцию findLeastFrequentChar(str), которая возвращает символ, 
