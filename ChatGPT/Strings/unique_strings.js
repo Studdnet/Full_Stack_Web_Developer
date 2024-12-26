@@ -192,6 +192,17 @@ findLeastFrequentChar("hello"); // "h" (или "e" или "o")
 findLeastFrequentChar("abracadabra"); // "c" (или "d")
 */
 
+function findLeastFrequentChar(str) {
+  const charCount = {};
+  for (const char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+  const uniqueChar = [...str].filter((char) => charCount[char] === 1);
+  return uniqueChar.join("");
+}
+
+console.log(findLeastFrequentChar("hello"));
+
 /* 
 Задача 8: Удалить уникальные символы
 Напишите функцию removeUniqueCharacters(str), которая возвращает строку, 
