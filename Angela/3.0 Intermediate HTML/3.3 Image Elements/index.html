@@ -1,6 +1,41 @@
-<!-- Kitten image URL -->
-https://raw.githubusercontent.com/appbrewery/webdev/main/kitten.jpeg
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3.3 Image Elements</title>
+  </head>
+  <style>
+    body {
+      background-color: lightgray;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 50px;
+    }
+    .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 800px;
+    }
 
+    img {
+      width: 350px;
+    }
 
-<!-- Puppy image URL -->
-https://raw.githubusercontent.com/appbrewery/webdev/main/puppy.gif
+    .kitten,
+    .dog {
+      max-width: 300px;
+    }
+  </style>
+  <body>
+    <div class="wrap">
+      <div class="kitten">
+        <img src="goal1.png" alt="kitten" />
+      </div>
+      <div class="dog">
+        <img src="goal2.png" alt="dog" />
+      </div>
+    </div>
+  </body>
+</html>
